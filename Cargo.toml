@@ -7,7 +7,7 @@ description = "Implementation of the BLS12-381 pairing-friendly elliptic curve c
 documentation = "https://docs.rs/bls12_381/"
 homepage = "https://github.com/zkcrypto/bls12_381"
 license = "MIT/Apache-2.0"
-name = "bls12_381"
+name = "fedimint_bls12_381"
 repository = "https://github.com/zkcrypto/bls12_381"
 version = "0.8.0"
 edition = "2021"
@@ -22,6 +22,7 @@ hex = "0.4"
 rand_xorshift = "0.3"
 sha2 = "0.9"
 sha3 = "0.9"
+serde_json = "1.0.114"
 
 [[bench]]
 name = "groups"
@@ -63,6 +64,15 @@ version = "1.4"
 default-features = false
 optional = true
 
+[dependencies.serde]
+version = "1.0.197"
+default-features = false
+optional = true
+
+[dependencies.serdect]
+version = "0.2.0"
+optional = true
+
 [features]
 default = ["groups", "pairings", "alloc", "bits"]
 bits = ["ff/bits"]
@@ -71,3 +81,4 @@ pairings = ["groups", "pairing"]
 alloc = ["group/alloc"]
 experimental = ["digest"]
 nightly = ["subtle/nightly"]
+serde = ["dep:serde", "serdect"]
